@@ -1,5 +1,13 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Welcome to Mini Shop 🐻‍❄️
+
+![bearpng](https://user-images.githubusercontent.com/61891279/121790836-f5504980-cbb9-11eb-8185-113a683a9248.png)
+
+## About 
+
+### Mini Shop is the most simple and compact method to buy. The UX and performance is amazing, something clean, perfect for purchases!
+
 ## Getting Started
 
 First, run the development server:

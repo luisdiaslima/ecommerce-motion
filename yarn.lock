@@ -2766,6 +2766,11 @@ react-lottie@^1.2.3:
     babel-runtime "^6.26.0"
     lottie-web "^5.1.3"
 
+react-quick-pinch-zoom@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/react-quick-pinch-zoom/-/react-quick-pinch-zoom-4.0.2.tgz#40dd4a0c4d78445555b68e176d68a6f094207536"
+  integrity sha512-gXAhixVJxarRqRqx+UqPKVPBNCDDczVPbIXMxmEyOKr8Tc+BDLuOTADwMk6rqasd2fuji4/NSbYbBQn9pO+4WA==
+
 react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
