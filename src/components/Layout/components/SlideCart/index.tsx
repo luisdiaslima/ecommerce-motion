@@ -1,9 +1,13 @@
-import Grow from '@material-ui/core/Grow'
+import { Grow } from '@material-ui/core'
 import { Container, Title } from './styles'
 import Lottie from 'react-lottie'
 import CoallaCrying from '../../../../../public/coalla-crying.json'
+import { useEffect, useRef } from 'react'
 
-export default function SimpleGrow({ checked }) {
+export default function SimpleGrow({ checked, setChecked }) {
+  const ref = useRef()
+
+  useOnClick(ref, () => setChecked(false))
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -12,8 +16,29 @@ export default function SimpleGrow({ checked }) {
       preserveAspectRatio: 'xMidYMid slice',
     },
   }
+
+  function useOnClick(ref, handler) {
+    useEffect(() => {
+      const listener = (event) => {
+        if (
+          !ref.current ||
+          ref.current.contains(event.target) ||
+          event.target?.namespaceURI === 'http://www.w3.org/2000/svg'
+        ) {
+          return
+        }
+        handler(event)
+      }
+
+      document.addEventListener('mousedown', listener)
+
+      return () => {
+        document.removeEventListener('mousedown', listener)
+      }
+    }, [])
+  }
   return (
-    <Grow in={checked}>
+    <Grow in={checked} ref={ref}>
       <Container
         style={{
           display: 'flex',

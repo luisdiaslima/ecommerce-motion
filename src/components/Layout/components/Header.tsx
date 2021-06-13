@@ -16,6 +16,16 @@ export const Header = () => {
   const [bear, setBear] = useState(bearIcons[0])
   const [checked, setChecked] = useState(false)
 
+  function handle() {
+    setChecked(false)
+  }
+
+  useEffect(() => {
+    if (window.scrollY >= 350) {
+      setChecked(false)
+    }
+  }, [headerY, handle])
+
   const shuffle = useCallback(() => {
     const index = Math.floor(Math.random() * bearIcons.length)
     setBear(bearIcons[index])
@@ -64,7 +74,7 @@ export const Header = () => {
             style={{ fontSize: '2.5rem', color: '#757f9a' }}
           />
         </motion.span>
-        <SimpleGrow checked={checked} />
+        <SimpleGrow checked={checked} setChecked={setChecked} />
         <motion.span
           style={{ marginRight: 50, cursor: 'pointer' }}
           whileHover={{ scale: 1.5 }}
