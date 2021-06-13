@@ -32,3 +32,16 @@ export const Title = styled(motion.text)`
 
   animation: ${shine} 5s linear infinite;
 `
+export const IconsHeader = styled.div`
+  display: flex;
+
+  justify-content: space-between;
+
+  @media (max-width: 411px) {
+    display: none;
+  }
+`
+export const IconModal = styled.div<{ setOpen }>`
+  display: flex;
+  flex-direction: column;
+`

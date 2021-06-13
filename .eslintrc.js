@@ -40,6 +40,7 @@ module.exports = {
           // Why would you want unused vars?
           '@typescript-eslint/no-unused-vars': ['error'],
   
+          'react-hooks/exhaustive-deps': 'off',
           'react/jsx-no-duplicate-props': 'off',
           'jsx-a11y/accessible-emoji': 'off',
           '@typescript-eslint/explicit-module-boundary-types': 'off',
