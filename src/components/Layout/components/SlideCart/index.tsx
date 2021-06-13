@@ -54,7 +54,12 @@ export default function SimpleGrow({ checked, setChecked }) {
       >
         <Title>Your cart is empty.</Title>
 
-        <Lottie options={defaultOptions} height={150} width={150} />
+        <Lottie
+          style={{ pointerEvents: 'none' }}
+          options={defaultOptions}
+          height={150}
+          width={150}
+        />
       </Container>
     </Grow>
   )
