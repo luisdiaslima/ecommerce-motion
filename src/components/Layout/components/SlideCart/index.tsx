@@ -9,8 +9,9 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import CoallaCrying from '../../../../../public/coalla-crying.json'
 import { useCallback, useEffect, useRef } from 'react'
 import { useCart } from '../../../../hooks/cart'
+import { toast } from 'react-toastify'
 
-export default function SimpleGrow({ checked, setChecked }) {
+export default function SimpleGrow({ checked, setChecked, id }) {
   const ref = useRef()
   const { cart, removeFromCart } = useCart()
 
@@ -27,10 +28,12 @@ export default function SimpleGrow({ checked, setChecked }) {
   function useOnClick(ref, handler) {
     useEffect(() => {
       const listener = (event) => {
+        const idExists = event?.path.find((item) => item.id === id)
         if (
           !ref.current ||
           ref.current.contains(event.target) ||
-          event.target?.namespaceURI === 'http://www.w3.org/2000/svg'
+          event?.target?.id === id ||
+          idExists
         ) {
           return
         }
@@ -42,12 +45,13 @@ export default function SimpleGrow({ checked, setChecked }) {
       return () => {
         document.removeEventListener('mousedown', listener)
       }
-    }, [])
+    }, [id])
   }
 
   const handleRemoveCart = useCallback(
     (item) => {
       removeFromCart(item)
+      toast.dark(`🐻‍❄ ${item.title} has been removed from your cart`)
     },
     [removeFromCart]
   )

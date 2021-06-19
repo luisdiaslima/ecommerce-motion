@@ -8,6 +8,7 @@ import { CardModal } from './styles'
 import { motion } from 'framer-motion'
 import { Fade } from '@material-ui/core'
 import { useCart } from '../../hooks/cart'
+import { toast } from 'react-toastify'
 
 const useStyles = makeStyles(() => ({
   modal: {
@@ -28,6 +29,7 @@ export default function ProductModal({ open, setOpen, product }) {
 
   const handleAddToCart = useCallback(() => {
     addToCart(product)
+    toast.dark(`🐻 ${product.title} has been added in you cart!`)
     setOpen(false)
   }, [product, addToCart, setOpen])
 

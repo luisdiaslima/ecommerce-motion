@@ -6,6 +6,8 @@ import InputIcon from '@material-ui/icons/Input'
 import LanguageIcon from '@material-ui/icons/Language'
 
 import SimpleGrow from './SlideCart'
+import SlideCountry from './SlideCountry'
+
 import { IconsHeader, Title } from '../styles'
 import { useCart } from '../../../hooks/cart'
 
@@ -19,6 +21,7 @@ export const Header = () => {
 
   const [bear] = useState(bearIcons[0])
   const [checked, setChecked] = useState(false)
+  const [country, setCountry] = useState(false)
 
   function handle() {
     setChecked(false)
@@ -52,7 +55,7 @@ export const Header = () => {
         backgroundColor: '#fff',
         borderBottom: '1px solid #a3a3a373',
         width: '100%',
-        height: '150px',
+        height: '75px',
         y: headerY,
       }}
     >
@@ -76,17 +79,19 @@ export const Header = () => {
           onClick={() => setChecked(!checked)}
         >
           <Badge badgeContent={cart?.length}>
-            <ShoppingBasketIcon style={{ fontSize: '2.5rem', color: '#757f9a' }} />
+            <ShoppingBasketIcon id="cart" style={{ fontSize: '2.5rem', color: '#757f9a' }} />
           </Badge>
         </motion.span>
-        <SimpleGrow checked={checked} setChecked={setChecked} />
+        <SimpleGrow id="cart" checked={checked} setChecked={setChecked} />
         <motion.span
           style={{ marginRight: 50, cursor: 'pointer' }}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
+          onClick={() => setCountry(!country)}
         >
-          <LanguageIcon style={{ fontSize: '2.5rem', color: '#757f9a' }} />
+          <LanguageIcon id="country" style={{ fontSize: '2.5rem', color: '#757f9a' }} />
         </motion.span>
+        <SlideCountry id="country" checked={country} setChecked={setCountry} />
         <motion.span
           style={{ cursor: 'pointer' }}
           whileHover={{ scale: 1.2 }}

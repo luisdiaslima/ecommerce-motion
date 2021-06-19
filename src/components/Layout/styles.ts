@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  margin-top: 150px;
+  margin-top: 80px;
   width: 100%;
 `
 
@@ -36,6 +36,10 @@ export const IconsHeader = styled.div`
   display: flex;
 
   justify-content: space-between;
+
+  > span {
+    margin-top: 10px;
+  }
 
   .MuiBadge-anchorOriginTopRightRectangle {
     font-weight: 600;
