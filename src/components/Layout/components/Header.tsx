@@ -73,12 +73,10 @@ export const Header = () => {
           style={{ marginRight: 50, cursor: 'pointer' }}
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
+          onClick={() => setChecked(!checked)}
         >
           <Badge badgeContent={cart?.length}>
-            <ShoppingBasketIcon
-              onClick={() => setChecked(!checked)}
-              style={{ fontSize: '2.5rem', color: '#757f9a' }}
-            />
+            <ShoppingBasketIcon style={{ fontSize: '2.5rem', color: '#757f9a' }} />
           </Badge>
         </motion.span>
         <SimpleGrow checked={checked} setChecked={setChecked} />

@@ -34,13 +34,17 @@ export const CardProduct = ({ product }: CardProductsProps) => {
         <h1>{product.title}</h1>
         <h3>{product.subtitle}</h3>
         <ButtonsContainer>
-          <motion.span whileHover={{ scale: 1.8 }} whileTap={{ scale: 0.9 }}>
-            <VisibilityIcon onClick={() => setOpen(!open)} />
+          <motion.span
+            whileHover={{ scale: 1.5 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setOpen(!open)}
+          >
+            <VisibilityIcon />
           </motion.span>
-          <motion.span whileHover={{ scale: 1.8 }} whileTap={{ scale: 0.9 }}>
+          <motion.span whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }}>
             <NearMeSharpIcon />
           </motion.span>
-          <motion.span whileHover={{ scale: 1.8 }} whileTap={{ scale: 0.9 }}>
+          <motion.span whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }}>
             <ShoppingBasketIcon />
           </motion.span>
         </ButtonsContainer>

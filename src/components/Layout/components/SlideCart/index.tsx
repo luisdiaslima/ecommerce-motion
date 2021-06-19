@@ -106,7 +106,7 @@ export default function SimpleGrow({ checked, setChecked }) {
                 <div
                   style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
                 >
-                  <Image src={item.image} width={50} height={50} />
+                  <Image alt={item.title} src={item.image} width={50} height={50} />
                 </div>
               </ProductCardToSlideCart>
             ))}
