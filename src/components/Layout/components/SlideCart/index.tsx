@@ -1,11 +1,18 @@
 import { Grow } from '@material-ui/core'
-import { Container, Title } from './styles'
+
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+
+import { Container, Title, ProductCardToSlideCart } from './styles'
 import Lottie from 'react-lottie'
+import HighlightOffIcon from '@material-ui/icons/HighlightOff'
 import CoallaCrying from '../../../../../public/coalla-crying.json'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
+import { useCart } from '../../../../hooks/cart'
 
 export default function SimpleGrow({ checked, setChecked }) {
   const ref = useRef()
+  const { cart, removeFromCart } = useCart()
 
   useOnClick(ref, () => setChecked(false))
   const defaultOptions = {
@@ -37,6 +44,14 @@ export default function SimpleGrow({ checked, setChecked }) {
       }
     }, [])
   }
+
+  const handleRemoveCart = useCallback(
+    (item) => {
+      removeFromCart(item)
+    },
+    [removeFromCart]
+  )
+
   return (
     <Grow in={checked} ref={ref}>
       <Container
@@ -45,6 +60,7 @@ export default function SimpleGrow({ checked, setChecked }) {
           width: 400,
           height: 500,
           borderRadius: 8,
+          padding: 15,
           backgroundColor: '#fff',
           boxShadow:
             'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
@@ -52,14 +68,60 @@ export default function SimpleGrow({ checked, setChecked }) {
           marginTop: 60,
         }}
       >
-        <Title>Your cart is empty.</Title>
-
-        <Lottie
-          style={{ pointerEvents: 'none' }}
-          options={defaultOptions}
-          height={150}
-          width={150}
-        />
+        {cart?.length ? (
+          <div style={{ overflow: 'auto', width: '100%' }}>
+            <Title>Your products:</Title>
+            {cart.map((item) => (
+              <ProductCardToSlideCart key={item.title}>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'space-between',
+                    justifyItems: 'space-between',
+                    justifyContent: 'space-between',
+                    flexDirection: 'row',
+                  }}
+                >
+                  <span>{item.title}</span>
+                  <motion.span
+                    style={{ cursor: 'pointer' }}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => handleRemoveCart(item)}
+                  >
+                    <HighlightOffIcon color="error" />
+                  </motion.span>
+                </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    justifyContent: 'flex-start',
+                    marginTop: -10,
+                    flexDirection: 'column',
+                  }}
+                >
+                  <text>{item.subtitle}</text>
+                </div>
+                <div
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}
+                >
+                  <Image src={item.image} width={50} height={50} />
+                </div>
+              </ProductCardToSlideCart>
+            ))}
+          </div>
+        ) : (
+          <>
+            <Title>Your cart is empty.</Title>
+            <Lottie
+              style={{ pointerEvents: 'none' }}
+              options={defaultOptions}
+              height={150}
+              width={150}
+            />
+          </>
+        )}
       </Container>
     </Grow>
   )

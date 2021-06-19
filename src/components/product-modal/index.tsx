@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+
 import { makeStyles } from '@material-ui/core/styles'
 import Modal from '@material-ui/core/Modal'
 import Backdrop from '@material-ui/core/Backdrop'
@@ -6,6 +7,7 @@ import Backdrop from '@material-ui/core/Backdrop'
 import { CardModal } from './styles'
 import { motion } from 'framer-motion'
 import { Fade } from '@material-ui/core'
+import { useCart } from '../../hooks/cart'
 
 const useStyles = makeStyles(() => ({
   modal: {
@@ -18,10 +20,16 @@ const useStyles = makeStyles(() => ({
 
 export default function ProductModal({ open, setOpen, product }) {
   const classes = useStyles()
+  const { addToCart } = useCart()
 
   const handleClose = () => {
     setOpen(false)
   }
+
+  const handleAddToCart = useCallback(() => {
+    addToCart(product)
+    setOpen(false)
+  }, [product, addToCart, setOpen])
 
   return (
     <Modal
@@ -51,9 +59,14 @@ export default function ProductModal({ open, setOpen, product }) {
 
           <h2 id="transition-modal-title">{product.title}</h2>
           <p id="transition-modal-description">{product.subtitle}</p>
-          <button className="glow-on-hover" type="button">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.99 }}
+            className="glow-on-hover"
+            onClick={handleAddToCart}
+          >
             Buy Now
-          </button>
+          </motion.button>
         </CardModal>
       </Fade>
     </Modal>

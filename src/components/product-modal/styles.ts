@@ -48,7 +48,7 @@ export const CardModal = styled.div`
     left: -2px;
     background-size: 400%;
     z-index: -1;
-    filter: blur(5px);
+    filter: blur(2px);
     width: calc(100% + 4px);
     height: calc(100% + 4px);
     animation: glowing 20s linear infinite;
@@ -61,8 +61,17 @@ export const CardModal = styled.div`
     color: #000;
   }
 
+  .glow-on-hover:hover {
+    color: #000;
+  }
+
   .glow-on-hover:active:after {
     background: transparent;
+  }
+
+  .glow-on-hover:hover:after {
+    background: white;
+    transition: 250ms ease-in-out;
   }
 
   .glow-on-hover:before {

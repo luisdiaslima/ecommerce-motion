@@ -37,6 +37,17 @@ export const IconsHeader = styled.div`
 
   justify-content: space-between;
 
+  .MuiBadge-anchorOriginTopRightRectangle {
+    font-weight: 600;
+    color: gray;
+  }
+
+  .MuiBadge-badge {
+    background: #d7dde8;
+    top: 5%;
+    right: 5px;
+  }
+
   @media (max-width: 411px) {
     display: none;
   }

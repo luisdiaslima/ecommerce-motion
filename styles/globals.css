@@ -3,7 +3,54 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Poppins';
+  
 }
+
+
+::-webkit-scrollbar{
+	width: 3.5px;
+}
+
+::-webkit-scrollbar-track-piece{
+  /* animation: glowing 20s linear infinite; */
+  background: linear-gradient(
+      45deg,
+      #ff0000,
+      #ff7300,
+      #fffb00,
+      #48ff00,
+      #00ffd5,
+      #002bff,
+      #7a00ff,
+      #ff00c8,
+      #ff0000
+    );
+	/* background-color: #FFF; */
+}
+
+::-webkit-scrollbar-thumb{
+	background-color: #CBCBCB;
+  /* background-color: #272727; */
+  border-radius: 50px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+::-webkit-scrollbar-thumb:hover{
+	/* background-color: #909090; */
+}
+
+
 
 a {
   color: inherit;
