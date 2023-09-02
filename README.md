@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## About 
 
-### Mini Shop is the most simple and compact method to buy. The UX and performance is amazing, something clean, perfect for purchases!
+### Enjoy the smooth!
 
 ## Getting Started
 
