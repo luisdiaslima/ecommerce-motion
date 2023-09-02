@@ -2,8 +2,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # Welcome to Mini Shop 🐻‍❄️
 
-## About 
-
 ### Enjoy the smooth!
 
 ## Getting Started
